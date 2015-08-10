@@ -31,6 +31,7 @@ WORKDIR /var/www/html/
 RUN git clone https://github.com/NRGI/resourcecontracts.org.git rc
 
 RUN mkdir /shared_path
+RUN mkdir -p /shared_path/rc
 RUN mkdir -p /shared_path/rc/{data,storage}
 RUN mkdir -p /shared_path/rc/storage/{logs,app,framework}
 RUN mkdir -p /shared_path/rc/storage/framework/{cache,sessions,views}
