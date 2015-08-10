@@ -43,7 +43,7 @@ RUN ln -s /shared_path/rc/data/ /var/www/html/rc/public/data
 
 WORKDIR /var/www/html/rc
 RUN curl -s http://getcomposer.org/installer | php
-RUN php composer.phar install
+RUN php composer.phar install --prefer-source
 RUN php composer.phar dump-autoload --optimize
 RUN php artisan clear-compiled
 
