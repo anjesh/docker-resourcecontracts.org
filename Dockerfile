@@ -57,9 +57,9 @@ RUN php composer.phar install --prefer-source
 RUN php composer.phar dump-autoload --optimize
 RUN php artisan clear-compiled
 
-CMD /etc/init.d/beanstalkd start
+RUN /etc/init.d/beanstalkd start
 ADD conf/supervisord.conf /etc/supervisord.conf
-CMD supervisord -c /etc/supervisord.conf
+RUN supervisord -c /etc/supervisord.conf
 
 ADD conf/.env /var/www/html/rc/.env
 
