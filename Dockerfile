@@ -32,9 +32,14 @@ RUN git clone https://github.com/NRGI/resourcecontracts.org.git rc
 
 RUN mkdir /shared_path
 RUN mkdir -p /shared_path/rc
-RUN mkdir -p /shared_path/rc/{data,storage}
-RUN mkdir -p /shared_path/rc/storage/{logs,app,framework}
-RUN mkdir -p /shared_path/rc/storage/framework/{cache,sessions,views}
+RUN mkdir -p /shared_path/rc/data
+RUN mkdir -p /shared_path/rc/storage
+RUN mkdir -p /shared_path/rc/storage/logs
+RUN mkdir -p /shared_path/rc/storage/app
+RUN mkdir -p /shared_path/rc/storage/framework
+RUN mkdir -p /shared_path/rc/storage/framework/cache
+RUN mkdir -p /shared_path/rc/storage/framework/sessions
+RUN mkdir -p /shared_path/rc/storage/framework/views
 RUN mkdir -p /shared_path/pdfprocessor/logs
 RUN chmod -R 777 /shared_path
 
