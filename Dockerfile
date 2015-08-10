@@ -24,7 +24,7 @@ RUN apt-get install -y \
 
 RUN a2enmod rewrite
 RUN a2enmod php5
-
+RUN ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/apache2/conf.d/20-mcrypt.ini
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 EXPOSE 80
 
