@@ -30,6 +30,8 @@ RUN ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini
 WORKDIR /var/www/html/
 RUN git clone https://github.com/NRGI/resourcecontracts.org.git rc
 
+RUN git clone https://github.com/anjesh/pdf-processor.git
+
 RUN mkdir /shared_path
 RUN mkdir -p /shared_path/rc
 RUN mkdir -p /shared_path/rc/data
@@ -46,6 +48,8 @@ RUN chmod -R 777 /shared_path
 RUN rm -rf /var/www/html/rc/storage
 RUN ln -s /shared_path/rc/storage/ /var/www/html/rc/storage
 RUN ln -s /shared_path/rc/data/ /var/www/html/rc/public/data
+RUN rm -rf /var/www/html/pdfprocessor/logs
+RUN ln -s /shared_path/pdfprocessor/logs/ /var/www/html/pdfprocessor/logs
 
 WORKDIR /var/www/html/rc
 RUN curl -s http://getcomposer.org/installer | php
@@ -56,9 +60,6 @@ RUN php artisan clear-compiled
 CMD /etc/init.d/beanstalkd start
 ADD conf/supervisord.conf /etc/supervisord.conf
 CMD supervisord -c /etc/supervisord.conf
-
-WORKDIR /var/www/html
-RUN git clone https://github.com/anjesh/pdf-processor.git
 
 ADD conf/.env /var/www/html/rc/.env
 
