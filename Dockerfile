@@ -62,4 +62,4 @@ ADD conf/supervisord.conf /etc/supervisord.conf
 ADD conf/.env /var/www/html/rc/.env
 
 EXPOSE 80
-CMD /etc/init.d/beanstalkd start && supervisord -c /etc/supervisord.conf && ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+CMD /etc/init.d/beanstalkd start && supervisord -c /etc/supervisord.conf && /usr/sbin/apache2ctl -D FOREGROUND
