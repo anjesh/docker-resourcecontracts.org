@@ -57,11 +57,9 @@ RUN php composer.phar install --prefer-source
 RUN php composer.phar dump-autoload --optimize
 RUN php artisan clear-compiled
 
-RUN /etc/init.d/beanstalkd start
 ADD conf/supervisord.conf /etc/supervisord.conf
-RUN supervisord -c /etc/supervisord.conf
 
 ADD conf/.env /var/www/html/rc/.env
 
 EXPOSE 80
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+CMD /etc/init.d/beanstalkd start && supervisord -c /etc/supervisord.conf && ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
