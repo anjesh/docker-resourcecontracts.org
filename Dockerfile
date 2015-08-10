@@ -42,14 +42,14 @@ RUN mkdir -p /shared_path/rc/storage/framework
 RUN mkdir -p /shared_path/rc/storage/framework/cache
 RUN mkdir -p /shared_path/rc/storage/framework/sessions
 RUN mkdir -p /shared_path/rc/storage/framework/views
-RUN mkdir -p /shared_path/pdfprocessor/logs
+RUN mkdir -p /shared_path/pdf-processor/logs
 RUN chmod -R 777 /shared_path
 
 RUN rm -rf /var/www/html/rc/storage
 RUN ln -s /shared_path/rc/storage/ /var/www/html/rc/storage
 RUN ln -s /shared_path/rc/data/ /var/www/html/rc/public/data
 RUN rm -rf /var/www/html/pdfprocessor/logs
-RUN ln -s /shared_path/pdfprocessor/logs/ /var/www/html/pdfprocessor/logs
+RUN ln -s /shared_path/pdfprocessor/logs/ /var/www/html/pdf-processor/logs
 
 WORKDIR /var/www/html/rc
 RUN curl -s http://getcomposer.org/installer | php
