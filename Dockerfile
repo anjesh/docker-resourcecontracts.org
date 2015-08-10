@@ -51,7 +51,7 @@ RUN php artisan clear-compiled
 
 CMD /etc/init.d/beanstalkd start
 ADD conf/supervisord.conf /etc/supervisord.conf
-CMD /etc/init.d/supervisord start
+CMD supervisord -c /etc/supervisord.conf
 
 WORKDIR /var/www/html
 RUN git clone https://github.com/anjesh/pdf-processor.git
