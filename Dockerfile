@@ -26,8 +26,6 @@ RUN a2enmod rewrite
 RUN a2enmod php5
 RUN ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/apache2/conf.d/20-mcrypt.ini
 RUN ln -s /etc/php5/mods-available/mcrypt.ini /etc/php5/cli/conf.d/20-mcrypt.ini
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-EXPOSE 80
 
 WORKDIR /var/www/html/
 RUN git clone https://github.com/NRGI/resourcecontracts.org.git rc
@@ -58,3 +56,5 @@ RUN git clone https://github.com/anjesh/pdf-processor.git
 
 ADD conf/.env /var/www/html/rc/.env
 
+EXPOSE 80
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
